@@ -11,9 +11,10 @@ public class GreetingController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    @RequestMapping("/greeting")
-    public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
+    @RequestMapping("/greeting") //stablish the http route
+    //@RequestParam ask for the data inserted in the url of the get method
+    public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name,@RequestParam(value="age", defaultValue="18") String age) {
         return new Greeting(counter.incrementAndGet(),
-                            String.format(template, name));
+                            String.format(template, name),age);
     }
 }
